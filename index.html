@@ -431,6 +431,73 @@
     .grid{ max-width:720px; width:100%; margin:0 auto; }
     :root{ --fs-school:15px; --fs-menu:14px; --fs-chip:11px; --fs-advtitle:16px; --fs-advdish:13px; }
   }
+
+  /* ── 아이폰(폭 600px 미만): 카드 세로 배치 + 큰 글씨 ── */
+  @media (max-width:599px){
+    :root{
+      --fs-school:21px;
+      --fs-menu:18px;
+      --fs-chip:13px;
+      --fs-advtitle:22px;
+      --fs-advdish:17px;
+    }
+    .brand-sub{ font-size:12px; }
+    .brand-title{ font-size:28px; }
+    .icon-btn{ font-size:15px; padding:10px 14px; border-radius:15px; }
+    .icon-btn svg{ width:16px; height:16px; }
+    .date-bar{ padding:5px 6px; }
+    .nav-btn{ width:44px; height:44px; font-size:26px; }
+    .date-main{ font-size:22px; }
+    .date-sub{ font-size:16px; }
+
+    /* 한 줄에 카드 하나, 아래로 스크롤 */
+    .grid{
+      grid-template-columns:1fr;
+      grid-template-rows:none;
+      grid-auto-rows:auto;
+      align-content:start;
+      gap:12px;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      padding:12px 14px calc(env(safe-area-inset-bottom) + 24px);
+    }
+    .card, .advice{ min-height:auto; }
+    .card{ padding:14px 14px 8px; }
+    .advice{ padding:14px 14px 8px; }
+    .card-head{ padding-bottom:10px; margin-bottom:10px; gap:8px; }
+    .school{ white-space:normal; overflow:visible; text-overflow:clip; }
+    .dot{ width:8px; height:8px; }
+    .chip{ padding:4px 10px; }
+
+    /* 카드 안쪽 스크롤 대신 내용 전체를 펼쳐 보이기 */
+    .card-body, .adv-body{
+      overflow:visible;
+      padding-bottom:0;
+      -webkit-mask-image:none;
+              mask-image:none;
+    }
+
+    .menu{ gap:8px; }
+    .menu li{ line-height:1.45; }
+    .menu li::before{ width:5px; height:5px; margin-top:.55em; }
+    .meal-label{ font-size:14px; margin-bottom:6px; }
+    .meal-block + .meal-block{ margin-top:14px; }
+    .card-foot{ font-size:13px; margin-top:10px; padding-top:9px; }
+    .empty{ font-size:17px; padding:14px 0 8px; }
+    .empty b{ font-size:19px; margin-bottom:5px; }
+
+    .adv-eyebrow{ font-size:11px; }
+    .adv-desc{ font-size:14px; }
+    .adv-zoom{ width:30px; height:30px; font-size:14px; border-radius:10px; }
+    .adv-row{ padding:9px 0; gap:9px; }
+    .adv-tag{ font-size:13px; padding:4px 9px; }
+    .adv-dishes em{ font-size:13px; }
+    .adv-minor{ font-size:14px; margin-top:8px; }
+    .adv-free{ font-size:16px; padding:11px 13px; margin-top:12px; }
+    .adv-free b{ font-size:13px; }
+    .adv-wait{ font-size:17px; }
+    .adv-hint{ font-size:13px; }
+  }
 </style>
 </head>
 <body>
@@ -571,7 +638,7 @@
 
   function cleanDish(t){
     return t
-      .replace(/\(([^)]*)\)/g, function(m, inner){
+      .replace(/$([^)]*)$/g, function(m, inner){
         return /^[0-9.,\s]*$/.test(inner) ? "" : "(" + inner + ")";
       })
       .replace(/[0-9]+(\.[0-9]+)*\.?/g, "")
