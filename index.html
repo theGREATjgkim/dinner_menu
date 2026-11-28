@@ -14,18 +14,19 @@
 <link rel="icon" type="image/png" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 <style>
   :root{
-    --lime-50:#F4FAEE;  --lime-100:#E8F5DC; --lime-200:#D6EBC2;
-    --lime-500:#8FC178; --lime-700:#4E7A41;
-    --lilac-50:#F8F5FD; --lilac-100:#EDE7FB; --lilac-200:#DFD5F7;
-    --lilac-500:#A28CDF; --lilac-700:#5E4C9B;
-    --ink:#23242A; --ink-2:#55575F; --muted:#9A9CA6;
+    --lime-50:#F2F5F0;  --lime-100:#E3EAE2; --lime-200:#CFDACE;
+    --lime-500:#7C8F76; --lime-700:#4A5C46;
+    --lilac-50:#F4F2F6; --lilac-100:#E7E3EA; --lilac-200:#D6CFDB;
+    --lilac-500:#8A7A96; --lilac-700:#574B63;
+    --accent:#B4634A; --accent-soft:#F6EAE4;
+    --ink:#22242A; --ink-2:#4E5158; --muted:#8A8D95;
     --line:rgba(35,36,42,.09);
     --radius:19px;
-    --serif:"Gowun Batang", "Apple SD Gothic Neo", serif;
+    --serif:"Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
     --sans:"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
 
     /* 2x2 격자 기준 글씨 크기 — 화면 높이에 따라 아래 미디어쿼리에서 조정 */
@@ -40,7 +41,7 @@
   body{
     font-family:var(--sans);
     color:var(--ink);
-    background:#FAFAF7;
+    background:#F7F6F3;
     letter-spacing:-.2px;
     -webkit-font-smoothing:antialiased;
     overflow:hidden;
@@ -48,9 +49,9 @@
   body::before{
     content:""; position:fixed; inset:0; z-index:-1;
     background:
-      radial-gradient(125% 62% at 6% -8%, var(--lime-100) 0%, rgba(232,245,220,0) 62%),
-      radial-gradient(115% 60% at 104% -2%, var(--lilac-100) 0%, rgba(237,231,251,0) 58%),
-      linear-gradient(180deg,#FCFCF8 0%,#F8F6FC 100%);
+      radial-gradient(125% 62% at 6% -8%, var(--lime-100) 0%, rgba(227,234,226,0) 62%),
+      radial-gradient(115% 60% at 104% -2%, var(--lilac-100) 0%, rgba(231,227,234,0) 58%),
+      linear-gradient(180deg,#FBFAF7 0%,#F3F1F4 100%);
   }
   ::-webkit-scrollbar{ width:0; height:0; }
 
@@ -203,7 +204,7 @@
   /* ── 저녁 메뉴 참고 (격자 첫 칸) ───────── */
   .advice{
     border:1px solid rgba(255,255,255,.85);
-    background:linear-gradient(140deg, rgba(232,245,220,.96) 0%, rgba(240,238,250,.96) 52%, rgba(237,231,251,.96) 100%);
+    background:linear-gradient(140deg, rgba(242,245,240,.97) 0%, rgba(244,242,246,.97) 55%, rgba(246,234,228,.97) 100%);
     padding:11px 12px 4px;
   }
   .advice::after{
@@ -267,16 +268,28 @@
     margin-top:6px; font-size:9.5px; font-weight:500;
     color:var(--ink-2); opacity:.65; line-height:1.45; word-break:keep-all;
   }
-  .adv-free{
-    margin-top:8px; padding:7px 9px; border-radius:12px;
-    background:rgba(255,255,255,.76);
-    font-size:10.5px; font-weight:600; color:var(--ink);
-    line-height:1.4; word-break:keep-all;
+  .adv-recommend{
+    margin:0 0 11px; padding:13px 13px; border-radius:16px;
+    background:linear-gradient(135deg, var(--accent-soft), #F8F1EC);
+    border:1.5px solid rgba(180,99,74,.38);
+    box-shadow:0 6px 18px rgba(180,99,74,.14);
   }
-  .adv-free b{
-    display:block; font-size:9px; font-weight:700; letter-spacing:.03em;
-    color:var(--lilac-700); margin-bottom:2px;
+  .adv-recommend-title{
+    font-family:var(--serif); font-size:13.5px; font-weight:800;
+    letter-spacing:-.4px; line-height:1.2; color:var(--ink);
+    margin-bottom:5px; word-break:keep-all;
   }
+  .adv-recommend-items{
+    font-size:17.5px; font-weight:800; line-height:1.4;
+    color:#B03A2E; word-break:keep-all;
+  }
+  .adv-recommend-alt{
+    background:rgba(255,255,255,.86);
+    border-color:rgba(87,75,99,.28);
+    box-shadow:none;
+  }
+  .adv-recommend-alt .adv-recommend-title{ color:var(--ink); }
+  .adv-recommend-alt .adv-recommend-items{ color:#B03A2E; }
   .adv-wait{
     font-size:10.5px; font-weight:500; line-height:1.5;
     color:var(--ink-2); opacity:.75; word-break:keep-all;
@@ -330,8 +343,9 @@
   .zoom-inner .adv-dishes{ font-size:15px; line-height:1.5; }
   .zoom-inner .adv-dishes em{ font-size:11px; }
   .zoom-inner .adv-minor{ font-size:12px; margin-top:10px; }
-  .zoom-inner .adv-free{ font-size:14px; margin-top:14px; padding:12px 14px; background:var(--lime-50); border:1px solid var(--lime-100); }
-  .zoom-inner .adv-free b{ font-size:11px; margin-bottom:4px; }
+  .zoom-inner .adv-recommend{ margin:0 0 18px; padding:18px 18px; border-radius:20px; }
+  .zoom-inner .adv-recommend-title{ font-size:18px; margin-bottom:8px; }
+  .zoom-inner .adv-recommend-items{ font-size:24px; }
   .zoom-inner .adv-wait{ font-size:14px; }
   .zoom-sheet{ max-height:88dvh; }
 
@@ -379,7 +393,7 @@
   .btn-primary{
     flex-shrink:0; border:none; border-radius:14px; padding:12px 16px;
     font-family:var(--sans); font-size:13.5px; font-weight:700; color:#fff;
-    background:linear-gradient(135deg,#8FC178 0%,#8E7AD2 100%);
+    background:linear-gradient(135deg,#4A5C46 0%,#574B63 100%);
   }
   .btn-primary:active{ opacity:.85; }
   .note{ font-size:11.5px; line-height:1.55; color:var(--muted); margin:9px 2px 0; word-break:keep-all; }
@@ -435,33 +449,32 @@
   /* ── 아이폰(폭 600px 미만): 2x2 배치 유지, 글씨는 이전 모바일 크기의 80% ── */
   @media (max-width:599px){
     :root{
-      --fs-school:16.8px;
-      --fs-menu:14.4px;
-      --fs-chip:10.4px;
-      --fs-advtitle:17.6px;
-      --fs-advdish:13.6px;
+      --fs-school:18.5px;
+      --fs-menu:16.2px;
+      --fs-chip:11.5px;
+      --fs-advtitle:20px;
+      --fs-advdish:15.5px;
     }
-    .brand-sub{ font-size:9.6px; }
-    .brand-title{ font-size:22.4px; }
+    .brand-title{ font-size:26px; font-weight:800; }
     .icon-btn{ font-size:12px; }
     .icon-btn svg{ width:12.8px; height:12.8px; }
-    .date-main{ font-size:17.6px; }
-    .date-sub{ font-size:12.8px; }
+    .date-main{ font-size:19px; }
+    .date-sub{ font-size:13.5px; }
     .nav-btn{ font-size:20.8px; }
-    .meal-label{ font-size:11.2px; margin-bottom:6px; }
+    .meal-label{ font-size:12.5px; margin-bottom:7px; }
     .card-foot{ font-size:10.4px; }
     .empty{ font-size:13.6px; }
     .empty b{ font-size:15.2px; }
     .adv-eyebrow{ font-size:8.8px; }
-    .adv-desc{ font-size:11.2px; }
+    .adv-desc{ font-size:12.5px; }
     .adv-zoom{ font-size:11.2px; }
-    .adv-tag{ font-size:10.4px; }
-    .adv-dishes em{ font-size:10.4px; }
-    .adv-minor{ font-size:11.2px; }
+    .adv-tag{ font-size:11.5px; }
+    .adv-dishes em{ font-size:11.5px; }
+    .adv-minor{ font-size:12.5px; }
     .adv-free{ font-size:12.8px; }
     .adv-free b{ font-size:10.4px; }
-    .adv-wait{ font-size:13.6px; }
-    .adv-hint{ font-size:10.4px; }
+    .adv-wait{ font-size:15px; }
+    .adv-hint{ font-size:11.5px; }
   }
 </style>
 </head>
@@ -471,7 +484,6 @@
   <header class="hero">
     <div class="hero-top">
       <div>
-        <p class="brand-sub">Our Family</p>
         <h1 class="brand-title">오늘의 <em>급식</em></h1>
       </div>
       <button type="button" class="icon-btn" id="open-modal-btn">
@@ -682,8 +694,7 @@
   /* ── 저녁 메뉴 참고: 점심 메인 요리 추출 ── */
   var ADV_STORAGE = "adv_open_v1";
   var adviceOpen = (readStorage(ADV_STORAGE) !== "0");
-  var CIRCLE = ["\u2460", "\u2461", "\u2462"];
-
+  
   var MAIN_GROUPS = [
     { key:"pork", label:"돼지고기", tone:"m",
       kw:["돼지","돈육","제육","삼겹","목살","앞다리살","뒷다리살","돈까스","돈가스","탕수육","수육","보쌈","두루치기","등갈비","폭립","동파육"] },
@@ -798,6 +809,26 @@
     var res = analyzeMains(payloads);
     var html = "";
 
+    var blocked = {};
+    for(var kk in res.buckets){
+      if(res.buckets.hasOwnProperty(kk)) blocked[kk] = 1;
+    }
+    if(blocked.ham) blocked.pork = 1;
+    if(blocked.duck) blocked.chicken = 1;
+
+    var free = [];
+    for(var s2=0; s2<SUGGEST_ORDER.length; s2++){
+      if(!blocked[SUGGEST_ORDER[s2]]) free.push(SUGGEST_LABEL[SUGGEST_ORDER[s2]]);
+    }
+
+    if(free.length){
+      html += '<div class="adv-recommend"><p class="adv-recommend-title">오늘 저녁은 이걸로!</p>' +
+              '<p class="adv-recommend-items">' + escapeHtml(free.join(" · ")) + '</p></div>';
+    } else {
+      html += '<div class="adv-recommend adv-recommend-alt"><p class="adv-recommend-title">오늘 저녁은 이걸로!</p>' +
+              '<p class="adv-recommend-items">같은 재료라도 조리법을 달리해 보세요 (국 · 찜 · 구이)</p></div>';
+    }
+
     if(!res.order.length){
       html += '<p class="adv-wait">고기·생선 같은 메인 요리를 찾지 못했어요.</p>';
     } else {
@@ -807,12 +838,6 @@
         for(var d=0; d<b.dishes.length; d++){
           var dish = b.dishes[d];
           var mk = "";
-          if(configured > 1){
-            for(var m=0; m<dish.marks.length; m++){
-              mk += (CIRCLE[dish.marks[m]] || "");
-            }
-            if(mk) mk = '<em>' + mk + '</em>';
-          }
           parts.push(escapeHtml(dish.name) + mk);
         }
         html += '<div class="adv-row">' +
@@ -825,26 +850,6 @@
       }
     }
 
-    var blocked = {};
-    for(var kk in res.buckets){
-      if(res.buckets.hasOwnProperty(kk)) blocked[kk] = 1;
-    }
-    if(blocked.ham) blocked.pork = 1;
-    if(blocked.duck) blocked.chicken = 1;
-
-    var free = [];
-    for(var s2=0; s2<SUGGEST_ORDER.length; s2++){
-      if(!blocked[SUGGEST_ORDER[s2]]) free.push(SUGGEST_LABEL[SUGGEST_ORDER[s2]]);
-    }
-    if(free.length){
-      html += '<p class="adv-free"><b>저녁엔 이쪽이 안 겹쳐요</b>' + escapeHtml(free.join(" · ")) + '</p>';
-    } else {
-      html += '<p class="adv-free"><b>오늘은 재료가 골고루 나왔어요</b>같은 재료라도 조리법을 달리해 보세요 (국 · 찜 · 구이)</p>';
-    }
-
-    if(configured > 1 && res.order.length){
-      html += '<p class="adv-minor">\u2460\u2461\u2462 는 설정에 넣은 1·2·3번 학교예요</p>';
-    }
     return html;
   }
 
